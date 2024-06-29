@@ -1,5 +1,7 @@
 import os
 from pathlib import Path
+import django_heroku
+import dj_database_url
 from datetime import timedelta
 from dotenv import load_dotenv
 
@@ -133,9 +135,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+django_heroku.settings(locals())
 
 MEDIA_ROOT = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
