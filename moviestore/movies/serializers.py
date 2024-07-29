@@ -28,7 +28,6 @@ class DirectorSerializer(serializers.ModelSerializer):
         model = Director
         fields = ['id', 'first_name', 'last_name', 'birth_date', 'biography']
 
-from rest_framework import serializers
 
 class MovieSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(max_length=None, allow_empty_file=False, use_url=True)
