@@ -89,13 +89,14 @@ WSGI_APPLICATION = 'moviestore.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'movidatabase',
-        'USER': 'postgres',
-        'PASSWORD': 'movie123',
-        'HOST': 'localhost',
-        'PORT': '5435',
+        'NAME': os.getenv('DB_NAME', 'movidatabase'),
+        'USER': os.getenv('DB_USER', 'postgres'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'movie123'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '5435'),
     }
 }
+DATABASES['default'].update(dj_database_url.config(conn_max_age=600, ssl_require=True))
 
 
 # Password validation
