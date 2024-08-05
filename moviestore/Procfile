@@ -1,2 +1,1 @@
-web: gunicorn moviestore.moviestore.wsgi
 web gunicorn movies.wsgi:apllication --log-file -
